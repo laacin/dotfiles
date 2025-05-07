@@ -1,0 +1,17 @@
+[cursor]
+style = "Block"
+unfocused_hollow = true
+
+[font]
+size = 13
+
+[font.normal]
+family = "IosevkaTerm NF"
+
+[window]
+decorations = "none"
+option_as_alt = "Both"
+opacity = 1
+
+[env]
+TERM = "xterm-256color"
