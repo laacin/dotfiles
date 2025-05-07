@@ -1,3 +1,9 @@
+# WSL
+# [terminal]
+# [terminal.shell]
+# program = "wsl.exe"
+# args = ["--cd", "~"]
+
 [cursor]
 style = "Block"
 unfocused_hollow = true
@@ -6,10 +12,11 @@ unfocused_hollow = true
 size = 13
 
 [font.normal]
-family = "IosevkaTerm NF"
+family = "FiraCode Nerd Font"
 
 [window]
 decorations = "none"
+padding = { x = 0, y = 0 }
 option_as_alt = "Both"
 opacity = 1
 
