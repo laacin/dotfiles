@@ -4,6 +4,9 @@
 # program = "wsl.exe"
 # args = ["--cd", "~"]
 
+[colors.primary]
+background = "#030303"
+
 [cursor]
 style = "Block"
 unfocused_hollow = true
