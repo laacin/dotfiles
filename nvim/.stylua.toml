@@ -1,0 +1,7 @@
+indent_width = 2
+indent_style = "Space"
+line_endings = "Unix"
+insert_final_newline = true
+column_width = 80
+quote_style = "Double"
+

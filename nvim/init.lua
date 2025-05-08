@@ -5,29 +5,32 @@ if not vim.loop.fs_stat(lazypath) then
     "clone",
     "--filter=blob:none",
     "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
+    "--branch=stable",
     lazypath,
   })
 end
 vim.opt.rtp:prepend(lazypath)
 
+if vim.fn.has("wsl") == 1 then
+  vim.g.clipboard = {
+    name = "win32yank",
+    copy = {
+      ["+"] = "win32yank.exe -i --crlf",
+      ["*"] = "win32yank.exe -i --crlf",
+    },
+    paste = {
+      ["+"] = "win32yank.exe -o --lf",
+      ["*"] = "win32yank.exe -o --lf",
+    },
+    cache_enabled = false,
+  }
+end
+
 require("options")
-require("lazy").setup(
-  "plugins",
-  {
+require("keymaps")
+require("lazy").setup({
   spec = {
-    { import = "lazyvim.plugins.extras.formatting.biome" },
-    { import = "lazyvim.plugins.extras.formatting.prettier" },
-
-    -- Linting plugins
-    { import = "lazyvim.plugins.extras.linting.eslint" },
-
-    -- Language support plugins
-    { import = "lazyvim.plugins.extras.lang.json" },
-    { import = "lazyvim.plugins.extras.lang.markdown" },
-    { import = "lazyvim.plugins.extras.lang.typescript" },
-    { import = "lazyvim.plugins.extras.lang.go" },
-    { import = "lazyvim.plugins.extras.lang.toml" },
-    { import = "lazyvim.plugins.extras.lang.rust" },
-  },
+    { import = "plugins" },
+    { import = "lsp" },
+  }
 })
