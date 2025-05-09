@@ -21,8 +21,5 @@ vim.wo.number = true
 vim.opt.cmdheight = 0
 vim.opt.fillchars = "eob: "
 
--- Formatting
-vim.api.nvim_create_augroup("FormatOnSave", { clear = true })
-
 vim.g.have_nerd_font = true
 vim.wo.relativenumber = true
