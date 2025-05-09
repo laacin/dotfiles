@@ -1,9 +1,3 @@
-# WSL
-# [terminal]
-# [terminal.shell]
-# program = "wsl.exe"
-# args = ["--cd", "~"]
-
 [cursor]
 style = "Block"
 unfocused_hollow = true
