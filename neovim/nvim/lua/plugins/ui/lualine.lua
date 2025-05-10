@@ -101,7 +101,45 @@ return {
             end,
           },
         },
-        extensions = { "neo-tree", "lazy", "fzf" },
+        extensions = {
+          "neo-tree",
+          "lazy",
+          "fzf",
+
+          {
+            filetypes = { "oil" },
+            sections = {
+              lualine_a = {
+                "mode",
+              },
+              lualine_b = {
+                "branch",
+              },
+              lualine_c = {
+                function()
+                  local ok, oil = pcall(require, "oil")
+                  if not ok then
+                    return ""
+                  end
+
+                  ---@diagnostic disable-next-line: param-type-mismatch
+                  local path = vim.fn.fnamemodify(oil.get_current_dir(), ":~")
+                  return "📁 " .. path
+                end,
+              },
+              lualine_y = {
+                function()
+                  return "Oil"
+                end,
+              },
+              lualine_z = {
+                function()
+                  return " " .. os.date("%R")
+                end,
+              },
+            },
+          },
+        },
       }
 
       if vim.g.trouble_lualine and LazyVim.has("trouble.nvim") then
