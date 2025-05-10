@@ -22,22 +22,7 @@ require("lazy").setup({
     ------ Lazvim & plugins
     { "LazyVim/LazyVim", import = "lazyvim.plugins" },
 
-    ------ EXTRAS
-    -- Langs
-    { import = "lazyvim.plugins.extras.lang.json" },
-    { import = "lazyvim.plugins.extras.lang.markdown" },
-    { import = "lazyvim.plugins.extras.lang.typescript" },
-    { import = "lazyvim.plugins.extras.lang.go" },
-    { import = "lazyvim.plugins.extras.lang.rust" },
-    { import = "lazyvim.plugins.extras.lang.toml" },
-
-    -- Lints & formatters
-    { import = "lazyvim.plugins.extras.linting.eslint" },
-    { import = "lazyvim.plugins.extras.formatting.biome" },
-    { import = "lazyvim.plugins.extras.formatting.prettier" },
-
     ------ Custom plugins
-    -- { import = "plugins" },
     { import = "plugins.ui" },
     { import = "plugins.editor" },
     { import = "plugins.lsp" },
