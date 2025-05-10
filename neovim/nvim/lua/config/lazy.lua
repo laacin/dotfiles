@@ -38,6 +38,9 @@ require("lazy").setup({
 
     ------ Custom plugins
     { import = "plugins" },
+    { import = "plugins.ui" },
+    { import = "plugins.editor" },
+    { import = "plugins.lsp" },
   },
 
   defaults = {
