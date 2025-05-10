@@ -76,7 +76,7 @@ return {
   -- Ensure Go tools are installed
   {
     "mason-org/mason.nvim",
-    opts = { ensure_installed = { "goimports", "gofumpt" } },
+    opts = { ensure_installed = { "gopls", "goimports", "gofumpt" } },
   },
   {
     "nvimtools/none-ls.nvim",
