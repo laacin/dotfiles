@@ -37,7 +37,7 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.formatting.prettier" },
 
     ------ Custom plugins
-    { import = "plugins" },
+    -- { import = "plugins" },
     { import = "plugins.ui" },
     { import = "plugins.editor" },
     { import = "plugins.lsp" },
