@@ -1,5 +1,5 @@
--- bootstrap lazy.nvim, LazyVim and your plugins
+-- Lazy bootstrap
 require("config.lazy")
 
--- Colorscheme
-vim.cmd("colorscheme catppuccin-mocha")
+-- Final configuration loaded
+require("config.after")
