@@ -6,6 +6,12 @@ end
 local auto_format = vim.g.lazyvim_eslint_auto_format == nil or vim.g.lazyvim_eslint_auto_format
 
 return {
+
+  {
+    "mason-org/mason.nvim",
+    opts = { ensure_installed = { "eslint_d" } },
+  },
+
   {
     "neovim/nvim-lspconfig",
     -- other settings removed for brevity
