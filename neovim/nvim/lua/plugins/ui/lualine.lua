@@ -124,7 +124,7 @@ return {
 
                   ---@diagnostic disable-next-line: param-type-mismatch
                   local path = vim.fn.fnamemodify(oil.get_current_dir(), ":~")
-                  return "📁 " .. path
+                  return "  " .. path
                 end,
               },
               lualine_y = {

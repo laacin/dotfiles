@@ -13,15 +13,7 @@ return {
           filename_bonus = true,
         },
         sources = {
-          explorer = false, -- {
-          -- matcher = {
-          --   fuzzy = true,
-          --   smartcase = true,
-          --   ignorecase = true,
-          --   filename_bonus = true,
-          --   sort_empty = false,
-          -- },
-          --},
+          explorer = false,
         },
       },
       dashboard = {
