@@ -1,5 +1,6 @@
 -- Colorscheme
-vim.cmd.colorscheme("catppuccin")
+local colorscheme = "catppuccin"
+vim.cmd.colorscheme(colorscheme)
 
 -- Enable/Disable background
 vim.api.nvim_create_user_command("DisableBackground", function()
@@ -7,5 +8,5 @@ vim.api.nvim_create_user_command("DisableBackground", function()
 end, {})
 
 vim.api.nvim_create_user_command("EnableBackground", function()
-  vim.cmd.colorscheme("catppuccin")
+  vim.cmd.colorscheme(colorscheme)
 end, {})
