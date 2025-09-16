@@ -1,6 +1,9 @@
 local blink = require("blink-cmp")
 
 local blink_config = {
+  keymap = {
+    ["<CR>"] = { "accept", "fallback" },
+  },
   sources = {
     providers = {
       lsp = { score_offset = 10 },
