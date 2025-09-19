@@ -9,9 +9,6 @@ return {
       cmdline = {
         view = "cmdline",
       },
-      messages = {
-        border = "single",
-      },
     },
   },
 }
