@@ -30,6 +30,7 @@ local go_treesitter = {
 -- Typescript
 local typescript_mason = {
   "vtsls",
+  "eslint-lsp",
   "eslint_d",
   "prettier",
   "stylelint",

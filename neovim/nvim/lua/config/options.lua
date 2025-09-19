@@ -1,3 +1,1 @@
-if table.unpack == nil then
-  table.unpack = unpack
-end
+vim.g.lazyvim_prettier_needs_config = false
