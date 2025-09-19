@@ -26,8 +26,8 @@ local go_treesitter = {
   "gowork",
   "gosum",
 }
--- Typescript
 
+-- Typescript
 local typescript_mason = {
   "vtsls",
   "eslint_d",

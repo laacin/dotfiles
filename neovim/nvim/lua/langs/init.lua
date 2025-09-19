@@ -1,3 +1,3 @@
 require("langs.lua")
 require("langs.go")
-require("langs.vtsls")
+require("langs.typescript")
