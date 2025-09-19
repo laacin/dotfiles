@@ -1,4 +1,3 @@
--- Bootstrap
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
   local lazyrepo = "https://github.com/folke/lazy.nvim.git"
@@ -15,20 +14,17 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- Lazy options
 require("lazy").setup({
   ui = {
-    border = "rounded",
+    border = "single",
   },
 
   spec = {
-    ------ Lazvim & plugins
     { "LazyVim/LazyVim", import = "lazyvim.plugins" },
 
-    ------ Custom plugins
-    { import = "plugins.ui" },
     { import = "plugins.editor" },
-    { import = "plugins.lsp" },
+    { import = "plugins.ui" },
+    { import = "plugins.extra" },
   },
 
   defaults = {

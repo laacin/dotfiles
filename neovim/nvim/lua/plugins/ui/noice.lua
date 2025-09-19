@@ -1,5 +1,4 @@
 return {
-  -- Noice
   {
     "folke/noice.nvim",
     event = "VeryLazy",
@@ -9,6 +8,9 @@ return {
       },
       cmdline = {
         view = "cmdline",
+      },
+      messages = {
+        border = "single",
       },
     },
   },

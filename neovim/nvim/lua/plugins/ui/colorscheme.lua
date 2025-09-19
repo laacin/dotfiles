@@ -1,5 +1,4 @@
 return {
-  -- Colorscheme
   {
     "catppuccin/nvim",
     lazy = false,

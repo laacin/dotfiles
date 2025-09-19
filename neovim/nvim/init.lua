@@ -1,5 +1,16 @@
--- Lazy bootstrap
-require("config.lazy")
+local c = require("constants")
 
--- Final configuration loaded
-require("config.after")
+require("config.lazy")
+require("config.usercmds")
+
+-- -- Initial CMDs
+-- colorscheme
+vim.cmd.colorscheme(c.COLORSCHEME)
+
+-- cursorline
+vim.api.nvim_set_hl(0, "CursorLineNr", { bold = true, fg = "#D7AF5F" })
+vim.api.nvim_set_hl(0, "CursorLine", { underline = false })
+
+-- Disable float tabs background
+vim.api.nvim_set_hl(0, "NormalFloat", { bg = "NONE" })
+vim.api.nvim_set_hl(0, "FloatBorder", { bg = "NONE" })
