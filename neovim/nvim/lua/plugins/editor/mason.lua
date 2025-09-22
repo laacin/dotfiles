@@ -1,4 +1,4 @@
-local install = require("utils.unpacking")(require("langs.ensure_installed").mason)
+local install = require("utils.unpacking")(require("ensure_installed").mason)
 
 local registry = require("mason-registry")
 

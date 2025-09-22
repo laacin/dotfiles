@@ -1,4 +1,4 @@
-local pkg = require("langs.ensure_installed").treesitter
+local pkg = require("ensure_installed").treesitter
 
 return {
   "nvim-treesitter",

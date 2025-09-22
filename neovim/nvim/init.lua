@@ -16,3 +16,7 @@ vim.api.nvim_set_hl(0, "NormalFloat", { bg = "NONE" })
 vim.api.nvim_set_hl(0, "FloatBorder", { bg = "NONE" })
 
 vim.o.winborder = "single"
+
+vim.lsp.config("*", {
+  capabilities = require("blink-cmp").get_lsp_capabilities(),
+})

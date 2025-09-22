@@ -31,11 +31,11 @@ local go_treesitter = {
 local typescript_mason = {
   "vtsls",
   "eslint-lsp",
-  "eslint_d",
   "prettier",
   "stylelint",
   "html-lsp",
   "css-lsp",
+  "json-lsp",
 }
 
 local typescript_treesitter = {
