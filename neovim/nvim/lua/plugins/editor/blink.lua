@@ -12,6 +12,25 @@ return {
   signature = { window = { border = "single" } },
 
   opts = {
+    cmdline = {
+      enabled = true,
+      keymap = { preset = "cmdline" },
+      completion = {
+        list = { selection = { preselect = false } },
+        menu = {
+          auto_show = function()
+            return vim.fn.getcmdtype() == ":"
+          end,
+        },
+        ghost_text = { enabled = true },
+      },
+    },
+
+    keymap = {
+      preset = "enter",
+      ["<C-y>"] = { "select_and_accept" },
+    },
+
     sources = {
       providers = {
         lsp = { score_offset = 10 },

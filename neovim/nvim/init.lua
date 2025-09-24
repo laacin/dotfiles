@@ -1,22 +1,11 @@
-local c = require("constants")
+local fs = require("core.imports")
+local bootstrap = require("core.bootstrap")
 
-require("config.lazy")
-require("config.usercmds")
+local cfg = {
+  before = fs.read_files("config/before", true),
+  after = fs.read_files("config/after", true),
+}
 
--- -- Initial CMDs
--- colorscheme
-vim.cmd.colorscheme(c.COLORSCHEME)
-
--- cursorline
-vim.api.nvim_set_hl(0, "CursorLineNr", { bold = true, fg = "#D7AF5F" })
-vim.api.nvim_set_hl(0, "CursorLine", { underline = false })
-
--- Disable float tabs background
-vim.api.nvim_set_hl(0, "NormalFloat", { bg = "NONE" })
-vim.api.nvim_set_hl(0, "FloatBorder", { bg = "NONE" })
-
-vim.o.winborder = "single"
-
-vim.lsp.config("*", {
-  capabilities = require("blink-cmp").get_lsp_capabilities(),
-})
+fs.load(cfg.before)
+bootstrap.setup("plugins") -- Lazy setup
+fs.load(cfg.after)
