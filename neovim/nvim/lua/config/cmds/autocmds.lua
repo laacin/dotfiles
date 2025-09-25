@@ -74,7 +74,7 @@ vim.api.nvim_create_autocmd("BufEnter", {
       return
     end
 
-    if not vim.startswith(buf_path, c.ROOTDIR) then
+    if not vim.startswith(buf_path, c.ROOT_DIR()) then
       vim.notify("Out of Root directory", "warn")
     end
   end,

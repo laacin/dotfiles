@@ -1,19 +1,30 @@
 local c = require("core.constants")
 
+local function relative_to(path, base)
+  base = base:gsub("/$", "")
+  if path:sub(1, #base) == base then
+    local rel = path:sub(#base + 2)
+    return rel
+  else
+    return path
+  end
+end
+
 local opts = function()
   local oilcwd = require("oil").get_current_dir
+
   local is_out = function(isoil)
     isoil = isoil or false
 
     if isoil then
-      return not vim.startswith(oilcwd(), c.ROOTDIR)
+      return not vim.startswith(oilcwd(), c.ROOT_DIR())
     else
       local buf = vim.api.nvim_buf_get_name(0)
       if buf == "" then
         return false
       end
 
-      return not vim.startswith(buf, c.ROOTDIR)
+      return not vim.startswith(buf, c.ROOT_DIR())
     end
   end
 
@@ -102,21 +113,21 @@ local opts = function()
           lualine_c = {
             function()
               local prefix = "  " .. " "
-              local path = vim.fn.fnamemodify(oilcwd(), ":.")
+              local path = relative_to(oilcwd(), c.ROOT_DIR())
 
               if vim.startswith(path, "/") then
                 return prefix .. path
               else
-                return prefix .. c.PROJECTNAME .. "/" .. path
+                return prefix .. c.PROJECT_NAME() .. "/" .. path
               end
             end,
           },
           lualine_y = {
             function()
               if is_out(true) then
-                return " Outside the project root: " .. c.PROJECTNAME
+                return " Outside the project root: " .. c.PROJECT_NAME()
               end
-              return c.PROJECTNAME
+              return c.PROJECT_NAME()
             end,
           },
           lualine_z = {
