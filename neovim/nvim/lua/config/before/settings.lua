@@ -15,3 +15,6 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.signcolumn = "yes"
 vim.opt.statuscolumn = "%=%l "
+
+-- Wrap
+vim.opt.wrap = false

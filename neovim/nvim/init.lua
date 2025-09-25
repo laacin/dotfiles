@@ -9,3 +9,6 @@ local cfg = {
 fs.load(cfg.before)
 bootstrap.setup("plugins") -- Lazy setup
 fs.load(cfg.after)
+
+print(require("core.constants").ROOTDIR)
+print(require("core.constants").PROJECTNAME)

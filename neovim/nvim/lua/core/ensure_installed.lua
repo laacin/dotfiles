@@ -12,6 +12,7 @@ M.mason = {
   "prettier",
   "stylelint",
   "css-lsp",
+  "html-lsp",
   "json-lsp",
 
   -- Go

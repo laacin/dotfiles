@@ -1,3 +1,5 @@
+local c = require("core.constants")
+
 local augroup = function(name)
   return vim.api.nvim_create_augroup(name, { clear = true })
 end
@@ -56,5 +58,24 @@ vim.api.nvim_create_autocmd("FileType", {
         desc = "Quit buffer",
       })
     end)
+  end,
+})
+
+-- Displays a warning when leaving the root directory
+vim.api.nvim_create_autocmd("BufEnter", {
+  group = augroup("root_dir_warn"),
+  callback = function()
+    if vim.bo.filetype == "oil" then
+      return
+    end
+
+    local buf_path = vim.api.nvim_buf_get_name(0)
+    if buf_path == "" then
+      return
+    end
+
+    if not vim.startswith(buf_path, c.ROOTDIR) then
+      vim.notify("Out of Root directory", "warn")
+    end
   end,
 })
