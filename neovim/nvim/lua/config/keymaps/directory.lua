@@ -8,7 +8,7 @@ m.setKey("<leader>rr", m.desc("Go to root directory", ""), function()
 end)
 
 -- Set new root
-m.setKey("<leader>rP", m.desc("Set as root directory", ""), function()
+m.setKey("<leader>rR", m.desc("Set as root directory", ""), function()
   if vim.bo.filetype ~= "oil" then
     vim.notify("Oil buffer required to set root", "warn")
     return
@@ -19,5 +19,5 @@ end)
 
 -- Show root dir
 m.setKey("<leader>rs", m.desc("Show info", ""), function()
-  vim.notify("Project: " .. c.PROJECT_NAME() .. " | " .. "Root: " .. c.ROOT_DIR())
+  vim.notify("Project: " .. c.PROJECT_NAME() .. "\n" .. "Root: " .. vim.fn.fnamemodify(c.ROOT_DIR(), ":~"))
 end)

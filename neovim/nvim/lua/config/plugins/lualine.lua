@@ -116,7 +116,7 @@ local opts = function()
               local path = relative_to(oilcwd(), c.ROOT_DIR())
 
               if vim.startswith(path, "/") then
-                return prefix .. path
+                return prefix .. vim.fn.fnamemodify(path, ":~")
               else
                 return prefix .. c.PROJECT_NAME() .. "/" .. path
               end
