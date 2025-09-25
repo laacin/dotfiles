@@ -50,7 +50,7 @@ setKey("<leader>l", opts("Lazy", "󰒲"), "<CMD>Lazy<CR>")
 setKey("-", false, "<CMD>Oil<CR>")
 
 -- Toggle Neotree
-setKey("<leader>e", opts("Toggle Neo-tree", "󰙅"), "<CMD>Neo-tree toggle<CR>")
+setKey("<leader>e", opts("Toggle Neo-tree", "󰙅"), "<CMD>Neotree toggle<CR>")
 
 -- LSP logs
 setGroup("<leader>d", opts("LSP", ""))
