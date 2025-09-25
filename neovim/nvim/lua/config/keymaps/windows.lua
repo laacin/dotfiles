@@ -4,14 +4,15 @@ local m = require("config.keymaps.utils")
 m.setGroup("<leader>w", m.desc("Windows", ""))
 
 -- Move
-m.setKey("<leader>wk", m.desc("Up", ""), "<C-w>k") -- Up
-m.setKey("<leader>wj", m.desc("Down", ""), "<C-w>j") -- Down
+m.setKey("<leader>wk", m.desc("Up", ""), "<C-w>k") -- Up
+m.setKey("<leader>wj", m.desc("Down", ""), "<C-w>j") -- Down
 m.setKey("<leader>wl", m.desc("Left", ""), "<C-w>l") -- Left
 m.setKey("<leader>wh", m.desc("Right", ""), "<C-w>h") -- Right
-m.setKey("<leader>wq", m.desc("Close", ""), "<C-w>c") -- Close
+m.setKey("<leader>wq", m.desc("Close", ""), "<C-w>c") -- Close
 
 -- Vertical split
-m.setKey("<leader>wv", m.desc("Vertical split", ""), function()
+m.setKey("<leader>wv", m.desc("Vertical split", ""), "<CMD>vsplit<CR>")
+m.setKey("<leader>wV", m.desc("Vertical split 1/3", ""), function()
   vim.cmd("vsplit")
   local wins = vim.api.nvim_tabpage_list_wins(0)
   local prev = wins[1]
@@ -23,7 +24,8 @@ m.setKey("<leader>wv", m.desc("Vertical split", ""), function()
 end)
 
 -- Horizontal split
-m.setKey("<leader>ws", m.desc("Horizontal split", ""), function()
+m.setKey("<leader>ws", m.desc("Horizontal split", ""), "<CMD>split<CR>")
+m.setKey("<leader>wS", m.desc("Horizontal split 1/3", ""), function()
   vim.cmd("split")
   local wins = vim.api.nvim_tabpage_list_wins(0)
   local prev = wins[1]

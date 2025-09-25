@@ -1,19 +1,16 @@
-local base_on_attach = vim.lsp.config.eslint.on_attach
-
 vim.lsp.config("eslint", {
+  workspace_required = true,
   on_attach = function(client, bufnr)
-    if not base_on_attach then
-      return
-    end
-
-    if vim.api.nvim_buf_get_name(bufnr) == "" then
-      return
-    end
-
-    base_on_attach(client, bufnr)
-    vim.api.nvim_create_autocmd("BufWritePre", {
-      buffer = bufnr,
-      command = "LspEslintFixAll",
-    })
+    vim.api.nvim_buf_create_user_command(0, "LspEslintFixAll", function()
+      client:request_sync("workspace/executeCommand", {
+        command = "eslint.applyAllFixes",
+        arguments = {
+          {
+            uri = vim.uri_from_bufnr(bufnr),
+            version = vim.lsp.util.buf_versions[bufnr],
+          },
+        },
+      }, nil, bufnr)
+    end, {})
   end,
 })

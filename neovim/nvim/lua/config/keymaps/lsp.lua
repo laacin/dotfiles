@@ -4,7 +4,17 @@ local m = require("config.keymaps.utils")
 m.setGroup("<leader>d", m.desc("LSP", ""))
 
 -- Info
-m.setKey("<leader>dI", m.desc("Info", ""), "<CMD>LspInfo<CR>")
+m.setKey("<leader>dS", m.desc("Info", ""), "<CMD>LspInfo<CR>")
+m.setKey("<leader>ds", m.desc("Currently active", ""), function()
+  local clients = vim.lsp.get_clients()
+  local names = {}
+
+  for _, cl in pairs(clients) do
+    table.insert(names, cl.name)
+  end
+
+  vim.notify(table.concat(names, "\n"))
+end)
 
 -- Diagnostics
 m.setKey("<leader>de", m.desc("Show diagnostic", "󰒡"), function()

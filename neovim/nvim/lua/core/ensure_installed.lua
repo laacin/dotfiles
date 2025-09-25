@@ -43,6 +43,7 @@ M.treesitter = {
   "javascript",
   "json",
   "json5",
+  -- BUG: "jsonc",
   "html",
   "css",
   "scss",

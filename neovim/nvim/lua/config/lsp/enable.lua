@@ -1,25 +1,24 @@
-local M = {}
+local lsp_servers = {
+  -- Lua
+  "lua_ls",
 
-M.rust = {
-  "rust_analyzer",
-}
+  -- Go
+  "gopls",
 
-M.typescript = {
+  -- Typescript
   "vtsls",
   "jsonls",
   "html",
   "cssls",
-}
+  -- BUG: "eslint",
 
-local lsp_servers = {
-  "lua_ls",
-  -- "gopls",
-  -- "vtsls",
-  -- "rust_analyzer",
-  -- "jsonls",
-  -- "html",
-  -- "cssls",
-  "eslint",
+  -- Rust
+  "rust_analyzer",
+
+  -- Extra
+  "dockerls",
+  "sqlls",
+  -- "tombi",
 }
 
 vim.lsp.enable(lsp_servers)

@@ -11,7 +11,7 @@ m.setKey("<leader>l", m.desc("Lazy", "󰒲"), "<CMD>Lazy<CR>")
 -- Toggle Neotree
 m.setKey("<leader>e", m.desc("Toggle Neo-tree", "󰙅"), "<CMD>Neotree toggle<CR>")
 
--- Home menu -- BUG
+-- BUG: Home menu
 -- setKey("<leader>h", opts("Dashboard", "󰋜"), function()
 --   require("snacks.dashboard").open()
 -- end)

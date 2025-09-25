@@ -3,12 +3,12 @@ local m = require("config.keymaps.utils")
 
 m.setGroup("<leader>r", m.desc("Directory", ""))
 -- Go to root
-m.setKey("<leader>rr", m.desc("Go to root directory", ""), function()
+m.setKey("<leader>rr", m.desc("Go to root", ""), function()
   require("oil").open(c.ROOT_DIR())
 end)
 
 -- Set new root
-m.setKey("<leader>rR", m.desc("Set as root directory", ""), function()
+m.setKey("<leader>rR", m.desc("Set as root", ""), function()
   if vim.bo.filetype ~= "oil" then
     vim.notify("Oil buffer required to set root", "warn")
     return
