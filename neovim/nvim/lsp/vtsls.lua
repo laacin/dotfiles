@@ -23,7 +23,6 @@ return {
       or vim.list_extend(root_markers, { ".git" })
     -- We fallback to the current working directory if no project root is found
     local project_root = vim.fs.root(bufnr, root_markers) or vim.fn.getcwd()
-
     on_dir(project_root)
   end,
 }
