@@ -1,7 +1,7 @@
 local c = require("core.constants")
 
 -- colorscheme
-vim.cmd.colorscheme(c.COLORSCHEME)
+vim.cmd.colorscheme(c.COLORSCHEME())
 
 -- cursorline
 vim.api.nvim_set_hl(0, "CursorLineNr", { bold = true, fg = "#D7AF5F" })

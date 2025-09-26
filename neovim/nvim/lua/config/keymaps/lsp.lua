@@ -1,4 +1,3 @@
-local c = require("core.constants")
 local m = require("config.keymaps.utils")
 
 -- -- LSP

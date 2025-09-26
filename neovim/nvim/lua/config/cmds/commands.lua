@@ -1,7 +1,7 @@
 local c = require("core.constants")
 local set_cmd = vim.api.nvim_create_user_command
 
--- Enable/Disable background
+-- Toggle background
 local bg = false
 set_cmd("Background", function()
   bg = not bg
@@ -9,13 +9,13 @@ set_cmd("Background", function()
   if bg then
     vim.api.nvim_set_hl(0, "Normal", { bg = "#030303" })
   else
-    vim.cmd.colorscheme(c.COLORSCHEME)
+    vim.cmd.colorscheme(c.COLORSCHEME())
   end
 end, {})
 
 -- Compile blink-cmp
 set_cmd("BuildBlink", function()
-  local path = c.ROOTDATA .. "/lazy/blink.cmp"
+  local path = c.DATA_PATH() .. "lazy/blink.cmp"
   vim.cmd("!cd " .. path .. " && cargo build --release")
 end, {})
 

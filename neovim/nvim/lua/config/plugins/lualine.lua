@@ -35,7 +35,7 @@ local opts = function()
 
   local opts = {
     options = {
-      theme = "catppuccin-mocha",
+      theme = c.COLORSCHEME(),
       globalstatus = true,
       disabled_filetypes = { statusline = { "snacks_dashboard" } },
     },
@@ -65,11 +65,12 @@ local opts = function()
         },
         {
           function()
-            return require("noice").api.status.mode.get()
+            local mode = require("noice").api.status.mode.get()
+            return vim.startswith(mode, "recording") and mode or ""
           end,
-          cond = function()
-            return package.loaded["noice"] and require("noice").api.status.mode.has()
-          end,
+          -- cond = function()
+          --   return package.loaded["noice"] and require("noice").api.status.mode.has()
+          -- end,
           color = { fg = "#a6d189" },
         },
         {

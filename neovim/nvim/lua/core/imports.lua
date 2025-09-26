@@ -1,10 +1,10 @@
-local stdp = require("core.constants").ROOTCONFIG
+local c = require("core.constants")
 
 local M = {}
 
 M.read_files = function(dir, as_mod)
   as_mod = as_mod or false
-  local path = stdp .. dir
+  local path = c.CONFIG_PATH() .. dir
 
   local files = {}
 
@@ -28,7 +28,7 @@ M.read_files = function(dir, as_mod)
 
   local mods = {}
   for _, f in ipairs(files) do
-    local rel = f:sub(#stdp + 1)
+    local rel = f:sub(#c.CONFIG_PATH() + 1)
     local noext = rel:gsub("%.%w+$", "")
     local mod = noext:gsub("/", ".")
 
@@ -40,7 +40,7 @@ end
 
 M.read_dirs = function(basedir, as_mod)
   as_mod = as_mod or false
-  local absp = stdp .. basedir
+  local absp = c.CONFIG_PATH() .. basedir
   local dirs = {}
 
   local fn
@@ -61,7 +61,7 @@ M.read_dirs = function(basedir, as_mod)
 
   local mods = {}
   for _, f in ipairs(dirs) do
-    local rel = f:sub(#stdp + 1)
+    local rel = f:sub(#c.CONFIG_PATH() + 1)
     local noext = rel:gsub("%.%w+$", "")
     local mod = noext:gsub("/", ".")
 
