@@ -15,8 +15,24 @@ end, {})
 
 -- Compile blink-cmp
 set_cmd("BuildBlink", function()
-  local path = c.DATA_PATH() .. "lazy/blink.cmp"
-  vim.cmd("!cd " .. path .. " && cargo build --release")
+  local path = c.DATA_PATH() .. "/lazy/blink.cmp"
+  local cmd = { "cargo", "build", "--release" }
+
+  vim.notify("🚀 Building blink.cmp...", vim.log.levels.INFO)
+
+  vim.system(cmd, { cwd = path }, function(obj)
+    if obj.code == 0 then
+      vim.schedule(function()
+        vim.notify("✅ Build completed successfully", vim.log.levels.INFO)
+      end)
+    else
+      vim.schedule(function()
+        vim.notify("❌ Build failed", vim.log.levels.ERROR)
+        vim.cmd("new")
+        vim.api.nvim_buf_set_lines(0, 0, -1, false, vim.split(obj.stderr, "\n"))
+      end)
+    end
+  end)
 end, {})
 
 -- Checkhealth vim.lsp
