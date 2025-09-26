@@ -15,6 +15,8 @@ m.setKey("<leader>rR", m.desc("Set as root", ""), function()
   end
 
   c.SET_ROOT_DIR(require("oil").get_current_dir())
+
+  vim.cmd("LspRestart")
 end)
 
 -- Show root dir

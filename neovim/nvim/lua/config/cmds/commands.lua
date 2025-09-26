@@ -1,21 +1,35 @@
 local c = require("core.constants")
+local set_cmd = vim.api.nvim_create_user_command
 
 -- Enable/Disable background
-vim.api.nvim_create_user_command("DisableBackground", function()
-  vim.api.nvim_set_hl(0, "Normal", { bg = "#030303" })
-end, {})
+local bg = false
+set_cmd("Background", function()
+  bg = not bg
 
-vim.api.nvim_create_user_command("EnableBackground", function()
-  vim.cmd.colorscheme(c.COLORSCHEME)
+  if bg then
+    vim.api.nvim_set_hl(0, "Normal", { bg = "#030303" })
+  else
+    vim.cmd.colorscheme(c.COLORSCHEME)
+  end
 end, {})
 
 -- Compile blink-cmp
-vim.api.nvim_create_user_command("BuildBlink", function()
-  local path = vim.fn.stdpath("data") .. "/lazy/blink.cmp"
+set_cmd("BuildBlink", function()
+  local path = c.ROOTDATA .. "/lazy/blink.cmp"
   vim.cmd("!cd " .. path .. " && cargo build --release")
 end, {})
 
 -- Checkhealth vim.lsp
-vim.api.nvim_create_user_command("LspInfo", function()
+set_cmd("LspInfo", function()
   vim.cmd("checkhealth vim.lsp")
+end, {})
+
+-- Restart LSPs
+---@diagnostic disable: missing-parameter
+set_cmd("LspRestart", function()
+  vim.lsp.stop_client(vim.lsp.get_clients(), true)
+  vim.lsp.config("*", {
+    root_dir = c.ROOT_DIR(),
+  })
+  vim.cmd("edit")
 end, {})

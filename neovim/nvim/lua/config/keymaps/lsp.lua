@@ -1,6 +1,7 @@
+local c = require("core.constants")
 local m = require("config.keymaps.utils")
 
--- LSP
+-- -- LSP
 m.setGroup("<leader>d", m.desc("LSP", ""))
 
 -- Info
@@ -24,3 +25,6 @@ end)
 m.setKey("<leader>dE", m.desc("Show ALL diagnostics", "󰒡"), function()
   vim.diagnostic.open_float(nil, { border = "single" })
 end)
+
+-- Restart
+m.setKey("<leader>dR", m.desc("Restart", ""), "<CMD>LspRestart<CR>")
