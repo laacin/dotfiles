@@ -1,137 +1,122 @@
+local utils = require("config.plugins.utils")
+local miniIcons = require("mini.icons")
 local c = require("core.constants")
 
-local function relative_to(path, base)
-  base = base:gsub("/$", "")
-  if path:sub(1, #base) == base then
-    local rel = path:sub(#base + 2)
-    return rel
-  else
-    return path
-  end
-end
+local icons = {
+  diagnostics = { Error = " ", Warn = " ", Info = " ", Hint = " " },
+  git = { added = " ", modified = " ", removed = " " },
+}
 
-local opts = function()
-  local oilcwd = require("oil").get_current_dir
+require("lualine").setup({
+  options = {
+    globalstatus = true,
+  },
 
-  local is_out = function(isoil)
-    isoil = isoil or false
-
-    if isoil then
-      return not vim.startswith(oilcwd(), c.ROOT_DIR())
-    else
-      local buf = vim.api.nvim_buf_get_name(0)
-      if buf == "" then
-        return false
-      end
-
-      return not vim.startswith(buf, c.ROOT_DIR())
-    end
-  end
-
-  local icons = {
-    diagnostics = { Error = " ", Warn = " ", Info = " ", Hint = " " },
-    git = { added = " ", modified = " ", removed = " " },
-  }
-
-  local opts = {
-    options = {
-      theme = c.COLORSCHEME(),
-      globalstatus = true,
-      disabled_filetypes = { statusline = { "snacks_dashboard" } },
+  sections = {
+    lualine_a = { "mode" },
+    lualine_b = { "branch" },
+    lualine_c = {
+      {
+        function()
+          return miniIcons.get("filetype", vim.bo.filetype) .. " "
+        end,
+        color = { fg = "#8aadf4" },
+      },
+      {
+        function()
+          return utils.get_file_name()
+        end,
+      },
+      {
+        "diagnostics",
+        symbols = icons.diagnostics,
+      },
     },
 
-    sections = {
-      lualine_a = { "mode" },
-      lualine_b = { "branch" },
-      lualine_c = {
-        { "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
+    lualine_x = {
+      {
         function()
-          local file = vim.api.nvim_buf_get_name(0)
-          local relative = vim.fn.fnamemodify(file, ":.")
-          return relative
+          return require("noice").api.status.command.get()
         end,
-        {
-          "diagnostics",
-          symbols = icons.diagnostics,
-        },
+        color = { fg = "#ff9e64" },
       },
-
-      lualine_x = {
-        {
-          function()
-            return require("noice").api.status.command.get()
-          end,
-          color = { fg = "#ff9e64" },
-        },
-        {
-          function()
-            local mode = require("noice").api.status.mode.get()
-            return vim.startswith(mode, "recording") and mode or ""
-          end,
-          -- cond = function()
-          --   return package.loaded["noice"] and require("noice").api.status.mode.has()
-          -- end,
-          color = { fg = "#a6d189" },
-        },
-        {
-          "diff",
-          symbols = icons.git,
-          source = function()
-            local gitsigns = vim.b.gitsigns_status_dict
-            if gitsigns then
-              return {
-                added = gitsigns.added,
-                modified = gitsigns.changed,
-                removed = gitsigns.removed,
-              }
-            end
-          end,
-        },
+      {
+        function()
+          local mode = require("noice").api.status.mode.get()
+          return vim.startswith(mode, "recording") and mode or ""
+        end,
+        color = { fg = "#a6d189" },
       },
-      lualine_y = {
-        { "progress", separator = " ", padding = { left = 1, right = 0 } },
-        { "location", padding = { left = 0, right = 1 } },
+      {
+        "diff",
+        symbols = icons.git,
+        source = function()
+          local gitsigns = vim.b.gitsigns_status_dict
+          if gitsigns then
+            return {
+              added = gitsigns.added,
+              modified = gitsigns.changed,
+              removed = gitsigns.removed,
+            }
+          end
+        end,
       },
-      lualine_z = {
+    },
+    lualine_y = {
+      { "progress", separator = " ", padding = { left = 1, right = 0 } },
+      { "location", padding = { left = 0, right = 1 } },
+    },
+    lualine_z = {
+      {
         function()
           return " " .. os.date("%R")
         end,
       },
     },
-    extensions = {
-      "neo-tree",
-      "lazy",
-      "fzf",
-      {
-        filetypes = { "oil" },
-        sections = {
-          lualine_a = {
-            "mode",
-          },
-          lualine_b = {
-            "branch",
-          },
-          lualine_c = {
+  },
+  extensions = {
+    "neo-tree",
+    "lazy",
+    "fzf",
+    {
+      filetypes = { "oil" },
+      sections = {
+        lualine_a = {
+          "mode",
+        },
+        lualine_b = {
+          "branch",
+        },
+        lualine_c = {
+          {
             function()
-              local prefix = "  " .. " "
-              local path = relative_to(oilcwd(), c.ROOT_DIR())
-
+              return " "
+            end,
+            color = { fg = "#8aadf4" },
+          },
+          {
+            function()
+              local path = utils.get_relative(true)
               if vim.startswith(path, "/") then
-                return prefix .. vim.fn.fnamemodify(path, ":~")
+                return vim.fn.fnamemodify(path, ":~")
               else
-                return prefix .. c.PROJECT_NAME() .. "/" .. path
+                return c.PROJECT_NAME() .. "/" .. path
               end
             end,
           },
-          lualine_y = {
+        },
+        lualine_y = {
+          {
             function()
-              if is_out(true) then
+              if utils.not_in_root(true) then
                 return " Outside the project root: " .. c.PROJECT_NAME()
               end
               return c.PROJECT_NAME()
             end,
           },
-          lualine_z = {
+        },
+        lualine_z = {
+          {
             function()
               return " " .. os.date("%R")
             end,
@@ -139,9 +124,5 @@ local opts = function()
         },
       },
     },
-  }
-
-  return opts
-end
-
-require("lualine").setup(opts())
+  },
+})
