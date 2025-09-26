@@ -2,9 +2,9 @@ local m = require("config.keymaps.utils")
 local oil = require("oil")
 
 -- -- -- -- Generals
--- Oil
-m.setKey("-", false, "<CMD>Oil<CR>")
 
+-- Oil
+m.setKey("<leader>q", m.desc("Oil", ""), "<CMD>Oil<CR>")
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "oil",
   callback = function()

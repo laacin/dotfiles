@@ -18,3 +18,6 @@ vim.opt.statuscolumn = "%=%l "
 
 -- Wrap
 vim.opt.wrap = false
+
+-- History
+vim.opt.shada = "!,'100,<50,s10,h"
