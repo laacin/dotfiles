@@ -79,3 +79,27 @@ vim.api.nvim_create_autocmd("BufEnter", {
     end
   end,
 })
+
+-- Prevent smear visual bugs when entering cmdline
+vim.api.nvim_create_autocmd("CmdlineEnter", {
+  callback = function()
+    if vim.fn.getcmdtype() ~= ":" then
+      return
+    end
+    local ok, smear = pcall(require, "smear_cursor")
+    if not ok then
+      return
+    end
+    smear.enabled = false
+  end,
+})
+
+vim.api.nvim_create_autocmd("CmdlineLeave", {
+  callback = function()
+    local ok, smear = pcall(require, "smear_cursor")
+    if not ok then
+      return
+    end
+    smear.enabled = true
+  end,
+})
