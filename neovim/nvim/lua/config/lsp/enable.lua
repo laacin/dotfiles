@@ -10,7 +10,7 @@ local lsp_servers = {
   "jsonls",
   "html",
   "cssls",
-  -- BUG: "eslint",
+  "eslint",
 
   -- Rust
   "rust_analyzer",
