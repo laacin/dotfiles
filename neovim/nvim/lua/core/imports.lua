@@ -1,10 +1,10 @@
-local c = require("core.constants")
+local config = require("core.constants").CONFIG_PATH() .. "/lua/"
 
 local M = {}
 
 M.read_files = function(dir, as_mod)
   as_mod = as_mod or false
-  local path = c.CONFIG_PATH() .. dir
+  local path = config .. dir
 
   local files = {}
 
@@ -28,7 +28,7 @@ M.read_files = function(dir, as_mod)
 
   local mods = {}
   for _, f in ipairs(files) do
-    local rel = f:sub(#c.CONFIG_PATH() + 1)
+    local rel = f:sub(#config + 1)
     local noext = rel:gsub("%.%w+$", "")
     local mod = noext:gsub("/", ".")
 
@@ -40,7 +40,7 @@ end
 
 M.read_dirs = function(basedir, as_mod)
   as_mod = as_mod or false
-  local absp = c.CONFIG_PATH() .. basedir
+  local absp = config .. basedir
   local dirs = {}
 
   local fn
@@ -61,7 +61,7 @@ M.read_dirs = function(basedir, as_mod)
 
   local mods = {}
   for _, f in ipairs(dirs) do
-    local rel = f:sub(#c.CONFIG_PATH() + 1)
+    local rel = f:sub(#config + 1)
     local noext = rel:gsub("%.%w+$", "")
     local mod = noext:gsub("/", ".")
 

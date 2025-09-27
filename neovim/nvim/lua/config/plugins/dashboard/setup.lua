@@ -8,7 +8,7 @@ dashboard.section.buttons.val = {
   dashboard.button("e", m.desc("", "Start"), ":Oil<CR>"),
   dashboard.button("f", m.desc("", "Find file"), ":Telescope find_files<CR>"),
   dashboard.button("l", m.desc("󰒲", "Lazy"), ":Lazy<CR>"),
-  dashboard.button("q", m.desc("", "Quite"), ":qa<CR>"),
+  dashboard.button("q", m.desc("", "Quit"), ":qa<CR>"),
 }
 
 for _, btn in ipairs(dashboard.section.buttons.val) do

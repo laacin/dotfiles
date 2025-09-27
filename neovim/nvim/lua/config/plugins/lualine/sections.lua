@@ -1,4 +1,4 @@
-local miniIcons = require("mini.icons")
+-- local miniIcons = require("mini.icons")
 local common = require("config.plugins.lualine.common")
 local utils = require("config.plugins.lualine.utils")
 local c = require("core.constants")
@@ -14,12 +14,7 @@ M.main = {
   lualine_a = { "mode" },
   lualine_b = { "branch" },
   lualine_c = {
-    {
-      function()
-        return miniIcons.get("filetype", vim.bo.filetype) .. " "
-      end,
-      color = { fg = "#8aadf4" },
-    },
+    { "filetype", icon_only = true },
     {
       function()
         return utils.get_file_name()

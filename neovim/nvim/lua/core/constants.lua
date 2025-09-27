@@ -4,7 +4,7 @@ local M = {}
 local root_directory = vim.fn.getcwd()
 local project_name = vim.fn.fnamemodify(root_directory, ":t")
 
-local config_path = vim.fn.stdpath("config") .. "/lua/"
+local config_path = vim.fn.stdpath("config")
 local data_path = vim.fn.stdpath("data")
 
 local colorscheme = "catppuccin-mocha"

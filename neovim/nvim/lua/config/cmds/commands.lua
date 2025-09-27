@@ -49,3 +49,29 @@ set_cmd("LspRestart", function()
   })
   vim.cmd("edit")
 end, {})
+
+-- Go to config
+---@diagnostic disable: undefined-field
+local function resolve_path(path) -- Symlink check
+  local stat = vim.loop.fs_lstat(path)
+
+  if stat and stat.type == "link" then
+    local target = vim.loop.fs_readlink(path)
+    if target then
+      return target
+    end
+  end
+
+  return path
+end
+
+set_cmd("Config", function()
+  local path = resolve_path(c.CONFIG_PATH())
+
+  require("oil").open(path)
+  c.SET_ROOT_DIR(path)
+
+  vim.cmd("LspRestart")
+end, {})
+
+-- set_cmd("ProjectDiagnostic", function() end)
