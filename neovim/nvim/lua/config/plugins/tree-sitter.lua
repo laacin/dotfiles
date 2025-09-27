@@ -11,5 +11,5 @@ require("nvim-treesitter.configs").setup({
   },
   modules = {},
   sync_install = false,
-  ignore_install = {},
+  ignore_install = { "haskell", "jsonc" },
 })
