@@ -5,7 +5,7 @@ local m = require("config.plugins.dashboard.utils")
 
 dashboard.section.header.val = ascii.a
 dashboard.section.buttons.val = {
-  dashboard.button("e", m.desc("", "Start"), ":Oil<CR>"),
+  dashboard.button("r", m.desc("", "Start"), ":Oil<CR>"),
   dashboard.button("f", m.desc("", "Find file"), ":Telescope find_files<CR>"),
   dashboard.button("l", m.desc("󰒲", "Lazy"), ":Lazy<CR>"),
   dashboard.button("c", m.desc("", "Configuration"), ":Config<CR>"),
