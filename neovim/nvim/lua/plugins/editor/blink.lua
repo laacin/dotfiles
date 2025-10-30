@@ -7,11 +7,16 @@ return {
     },
     ghost_text = { enabled = false },
     menu = { border = "single" },
-    documentation = { window = { border = "single" } },
   },
   signature = { window = { border = "single" } },
 
   opts = {
+    completion = {
+      documentation = {
+        auto_show = true,
+        window = { border = "single" },
+      },
+    },
     cmdline = {
       enabled = true,
       keymap = { preset = "cmdline" },
