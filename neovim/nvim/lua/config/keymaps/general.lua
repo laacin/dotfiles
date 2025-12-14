@@ -22,3 +22,6 @@ m.setKey("<leader>e", m.desc("Toggle Neo-tree", "󰙅"), "<CMD>Neotree toggle<CR
 
 -- Dashboard
 m.setKey("<leader>h", m.desc("Dashboard", "󰋜"), "<CMD>Alpha<CR>")
+
+-- Background
+m.setKey("<leader>b", m.desc("Toggle Background", "󰽣"), "<CMD>Background<CR>")
