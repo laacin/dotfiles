@@ -30,6 +30,8 @@ M.mason = {
   "sqlls",
   "sql-formatter",
   "shfmt",
+  "tombi",
+  "astro-language-server",
 }
 
 -- -- -- TREESITTER
@@ -63,6 +65,7 @@ M.treesitter = {
   "dockerfile",
   "sql",
   "gitignore",
+  "astro",
 }
 
 return M

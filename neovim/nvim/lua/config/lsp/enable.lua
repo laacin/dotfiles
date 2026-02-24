@@ -11,6 +11,7 @@ local lsp_servers = {
   "html",
   "cssls",
   "eslint",
+  "astro",
 
   -- Rust
   "rust_analyzer",
@@ -18,7 +19,7 @@ local lsp_servers = {
   -- Extra
   "dockerls",
   "sqlls",
-  -- "tombi",
+  "tombi",
 }
 
 vim.lsp.enable(lsp_servers)
