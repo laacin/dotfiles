@@ -103,3 +103,10 @@ vim.api.nvim_create_autocmd("CmdlineLeave", {
     smear.enabled = true
   end,
 })
+
+-- Tree-sitter highlighter
+vim.api.nvim_create_autocmd("FileType", {
+  callback = function(args)
+    pcall(vim.treesitter.start, args.buf)
+  end,
+})

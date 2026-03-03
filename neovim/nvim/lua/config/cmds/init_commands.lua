@@ -11,6 +11,3 @@ vim.api.nvim_set_hl(0, "CursorLine", { underline = false })
 vim.api.nvim_set_hl(0, "NormalFloat", { bg = "NONE" })
 vim.api.nvim_set_hl(0, "FloatBorder", { bg = "NONE" })
 vim.o.winborder = "single"
-
--- Tree-sitter
-vim.cmd("TSEnable highlight")
