@@ -105,8 +105,27 @@ vim.api.nvim_create_autocmd("CmdlineLeave", {
 })
 
 -- Tree-sitter highlighter
+local raw = require("core.ensure_installed").treesitter
+local patterns = {}
+
+for _, v in ipairs(raw) do
+  if v == "tsx" then
+    table.insert(patterns, "typescriptreact")
+  elseif v == "jsx" then
+    table.insert(patterns, "javascriptreact")
+  else
+    table.insert(patterns, v)
+  end
+end
+
 vim.api.nvim_create_autocmd("FileType", {
+  pattern = patterns,
   callback = function(args)
-    pcall(vim.treesitter.start, args.buf)
+    if vim.bo[args.buf].filetype ~= "oil" then
+      local ok = pcall(vim.treesitter.start, args.buf)
+      if not ok then
+        vim.notify("Failed to load tree-sitter on: " .. args.buf, vim.log.levels.WARN)
+      end
+    end
   end,
 })
