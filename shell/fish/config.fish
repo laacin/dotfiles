@@ -13,4 +13,6 @@ functions -e fish_right_prompt
 set -g fish_greeting ""
 set -g theme_nerd_fonts yes
 set -g theme_display_welcome no
+
 set -g theme_color_scheme catppuccin-mocha
+fish_config theme choose "Catppuccin Mocha"

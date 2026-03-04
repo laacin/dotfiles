@@ -3,7 +3,6 @@ old-nvim/
 kickbase-nvim/
 backup/
 
-
 tt.*
 .tests
 doc/tags
@@ -12,3 +11,5 @@ debug
 foo.*
 *.log
 data
+
+fish_variables
