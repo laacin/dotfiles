@@ -34,6 +34,31 @@ M.mason = {
   "astro-language-server",
 }
 
+-- -- -- LSPs
+M.lsps = {
+  -- Lua
+  "lua_ls",
+
+  -- Go
+  "gopls",
+
+  -- Typescript
+  "vtsls",
+  "jsonls",
+  "html",
+  "cssls",
+  "eslint",
+  "astro",
+
+  -- Rust
+  "rust_analyzer",
+
+  -- Extra
+  "dockerls",
+  "sqlls",
+  "tombi",
+}
+
 -- -- -- TREESITTER
 M.treesitter = {
   -- Lua
@@ -45,7 +70,6 @@ M.treesitter = {
   "javascript",
   "json",
   "json5",
-  -- BUG: "jsonc",
   "html",
   "css",
   "scss",

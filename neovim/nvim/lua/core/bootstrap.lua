@@ -18,14 +18,12 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 -- Load lazy
-local fs = require("core.imports")
 local M = {}
 
 M.setup = function(plugins)
   local result = {}
-  local values = fs.read_dirs(plugins, true)
 
-  for _, mod in ipairs(values) do
+  for _, mod in ipairs(plugins) do
     table.insert(result, { import = mod })
   end
 
