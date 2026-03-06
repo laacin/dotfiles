@@ -8,13 +8,25 @@ end
 vim.api.nvim_create_autocmd("ColorScheme", {
   group = augroup("colorscheme_augroup"),
   callback = function()
-    -- Cursorline
-    vim.api.nvim_set_hl(0, "CursorLineNr", { bold = true, fg = "#D7AF5F" })
-    vim.api.nvim_set_hl(0, "CursorLine", { underline = false })
-
     -- Disable float tabs background
     vim.api.nvim_set_hl(0, "NormalFloat", { bg = "NONE" })
     vim.api.nvim_set_hl(0, "FloatBorder", { bg = "NONE" })
+
+    -- Cursor
+    vim.api.nvim_set_hl(0, "CursorLine", { underline = false })
+
+    -- Column
+    vim.api.nvim_set_hl(0, "LineNr", { fg = "#6C7086" })
+    vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "#CDD6F4", bold = true })
+  end,
+})
+
+-- Hide column during Oil
+vim.api.nvim_create_autocmd("FileType", {
+  group = augroup("oil_arrow"),
+  pattern = { "oil" },
+  callback = function()
+    vim.opt_local.statuscolumn = "%s%=%{v:lnum == line('.') ? '  ' : ''}%=  "
   end,
 })
 

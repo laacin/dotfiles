@@ -10,8 +10,10 @@ end
 vim.o.clipboard = "unnamedplus"
 
 -- Column line
+vim.opt.statuscolumn = "%s%=%{&number || &relativenumber ? (&relativenumber && v:relnum ? v:relnum : v:lnum) : ''}%=  "
 vim.opt.fillchars = "eob: "
 vim.opt.number = true
+vim.opt.cursorline = true
 vim.opt.relativenumber = true
 vim.opt.signcolumn = "yes"
 
@@ -20,3 +22,6 @@ vim.opt.wrap = false
 
 -- History
 vim.opt.shada = "!,'100,<50,s10,h"
+
+-- square border on floats
+vim.o.winborder = "single"
