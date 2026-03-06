@@ -2,6 +2,7 @@ kickstart-nvim/
 old-nvim/
 kickbase-nvim/
 backup/
+nvim-nightly/
 
 tt.*
 .tests
