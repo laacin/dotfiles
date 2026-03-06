@@ -14,5 +14,9 @@ set -g fish_greeting ""
 set -g theme_nerd_fonts yes
 set -g theme_display_welcome no
 
+# nvim
+alias nvim 'env NVIM_APPNAME=nvim nvim'
+alias nvimn 'env NVIM_APPNAME=nvim-nightly nvim'
+
 set -g theme_color_scheme catppuccin-mocha
 fish_config theme choose "Catppuccin Mocha"
