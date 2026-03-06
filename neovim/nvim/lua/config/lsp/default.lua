@@ -5,6 +5,9 @@ vim.lsp.config("*", {
   capabilities = require("blink-cmp").get_lsp_capabilities(),
 })
 
-vim.diagnostic.config({ virtual_text = true })
+vim.diagnostic.config({
+  virtual_text = true,
+  signs = false,
+})
 
 vim.lsp.enable(require("core.ensure_installed").lsps)
