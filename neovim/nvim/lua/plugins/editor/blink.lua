@@ -24,6 +24,8 @@ return {
     -- See :h blink-cmp-config-keymap for defining your own keymap
     keymap = { preset = "enter" },
 
+    -- signature = { enabled = false },
+
     -- (Default) Only show the documentation popup when manually triggered
     completion = { documentation = { auto_show = false } },
 

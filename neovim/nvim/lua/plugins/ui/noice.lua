@@ -8,5 +8,8 @@ return {
     cmdline = {
       view = "cmdline",
     },
+    lsp = {
+      signature = { enabled = false },
+    },
   },
 }
