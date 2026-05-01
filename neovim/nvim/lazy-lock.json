@@ -1,7 +1,7 @@
 {
   "alpha-nvim": { "branch": "main", "commit": "6c6a89d5b068b5251c8bdf0dd57bb921bcfeeb09" },
-  "blink.cmp": { "branch": "main", "commit": "147c96b976fb5f6f04801fabad83920d5c8817dd" },
-  "blink.lib": { "branch": "main", "commit": "dda2666685a5ac3598166577d2e34f1fff6b1637" },
+  "blink.cmp": { "branch": "main", "commit": "404ab55beb8b63d4c4be4bfd4e528441745b000a" },
+  "blink.lib": { "branch": "main", "commit": "796121278a414eb0b487d115786c603a764ac82a" },
   "catppuccin": { "branch": "main", "commit": "426dbebe06b5c69fd846ceb17b42e12f890aedf1" },
   "conform.nvim": { "branch": "master", "commit": "dca1a190aa85f9065979ef35802fb77131911106" },
   "gitsigns.nvim": { "branch": "main", "commit": "6d808f99bd63303646794406e270bd553ad7792e" },
